@@ -352,6 +352,14 @@
                                 sec.style.display = 'none';
                             }
                         });
+                    } else if (target === 'packing-list') {
+                        sections.forEach(function(sec) {
+                            if (sec.id === 'packing-basic' || sec.id === 'packing-clean' || sec.id === 'packing-special' || sec.id === 'packing-recommend') {
+                                sec.style.display = 'block';
+                            } else {
+                                sec.style.display = 'none';
+                            }
+                        });
                     } else {
                         sections.forEach(function(sec) {
                             if (sec.id === target) {
