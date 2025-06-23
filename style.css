@@ -5,21 +5,23 @@ body {
     line-height: 1.8;
     margin: 0;
     padding: 0;
-    background-color: #fff; /* 白色背景 */
+    background-color: #f4f6fa; /* 淡灰背景 */
     color: #222; /* 深灰文字 */
 }
 
 header {
     background: #1f4068; /* 深藍色 */
     color: #fff;
-    padding: 1rem 0;
+    padding: 1.5rem 0 1rem 0;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 header h1 {
     margin: 0;
     font-weight: 700;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
 }
 
 nav ul {
@@ -29,56 +31,105 @@ nav ul {
 }
 
 nav ul li {
-    display: inline-block; /* Use inline-block for better spacing control */
+    display: inline-block;
     margin: 5px 10px;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
-    padding: 8px 15px;
-    background-color: #1f4068; /* 深藍色按鈕 */
-    border-radius: 20px;
-    transition: background-color 0.3s ease;
-    font-weight: 400;
+    padding: 10px 22px;
+    background-color: #1f4068;
+    border-radius: 22px;
+    transition: background-color 0.3s, box-shadow 0.2s;
+    font-weight: 500;
+    font-size: 1.08em;
 }
-
 nav ul li a:hover, nav ul li a.active {
-    background-color: #324a7a; /* 較亮的深藍 */
+    background-color: #273c50;
+    box-shadow: 0 2px 8px rgba(31,64,104,0.10);
 }
 
 main {
-    padding: 30px;
-    max-width: 900px;
-    margin: 20px auto;
+    padding: 40px 10px 30px 10px;
+    max-width: 980px;
+    margin: 30px auto 0 auto;
 }
 
-section {
-    margin-bottom: 30px;
-    padding: 25px;
-    background: #fff; /* 白色卡片 */
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    border-left: 5px solid #1f4068;
+.content-section {
+    margin-bottom: 32px;
+    padding: 28px 28px 22px 28px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 24px rgba(31,64,104,0.10);
+    border-left: 7px solid #1f4068;
+    transition: box-shadow 0.2s;
+}
+.content-section:hover {
+    box-shadow: 0 10px 32px rgba(31,64,104,0.18);
 }
 
-section h2 {
-    color: #1f4068; /* 深藍色標題 */
-    border-bottom: 2px solid #eef2f7;
+.content-section h2 {
+    color: #1f4068;
+    border-bottom: 2px solid #e3e8f0;
     padding-bottom: 10px;
     margin-top: 0;
+    font-size: 1.35em;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
-article {
-    margin-bottom: 15px;
+.content-section ul {
+    padding-left: 1.2em;
+    margin: 18px 0 0 0;
+}
+.content-section ul li {
+    color: #222;
+    font-size: 1.08em;
+    margin-bottom: 7px;
+    position: relative;
+    padding-left: 18px;
+}
+.content-section ul li::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #1f4068;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 9px;
 }
 
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 24px 0 24px 0;
     background: #1f4068;
     color: #fff;
-    font-size: 0.9em;
+    font-size: 1em;
+    margin-top: 40px;
+}
+
+.panel img {
+    max-height: 120px;
+    border-radius: 6px;
+    height: auto;
+    width: auto;
+    box-shadow: 0 2px 8px rgba(31,64,104,0.10);
+}
+
+@media (max-width: 700px) {
+    main {
+        padding: 10px 2vw 20px 2vw;
+    }
+    .content-section {
+        padding: 16px 6vw 14px 6vw;
+    }
+    .panel img {
+        max-width: 100%;
+        height: auto;
+    }
 }
 
 .weather-btn, .city-btn {
@@ -105,11 +156,4 @@ footer {
 .weather-widget {
   text-align: center;
   margin: 1em 0 2em 0;
-}
-
-.panel img {
-    max-height: 120px;
-    border-radius: 6px;
-    height: auto;
-    width: auto;
 } 
