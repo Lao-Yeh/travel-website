@@ -22,105 +22,81 @@
         <h1>那啥第二屆隊遊</h1>
         <nav>
             <ul>
-                <li><a href="#day1">第一天</a></li>
-                <li><a href="#day2">第二天</a></li>
-                <li><a href="#day3">第三天</a></li>
+                <li><a href="#weather">天氣</a></li>
+                <li><a href="#day1">行程</a></li>
+                <li><a href="#packing-list">行李</a></li>
+                <li><a href="#rules">遊戲規則</a></li>
                 <li><a href="#reminders">注意事項</a></li>
-                <li><a href="#packing-list">行李清單</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
+        <section id="weather">
+            <h2>天氣</h2>
+            <div style="max-width: 100%; overflow-x: auto;">
+                <iframe src="https://www.cwb.gov.tw/V8/C/W/OBS_Station.html?ID=46766" width="375" height="420" style="border:none;" title="羅東天氣預報"></iframe>
+            </div>
+            <p style="font-size:0.9em; color:#888;">資料來源：中央氣象局</p>
+        </section>
+
         <section id="day1">
-            <h2>第一天：悠閒集合日</h2>
+            <h2>第一天：抵達與探索</h2>
             <article>
-                <h3>上午</h3>
-                <p>
-                    <!-- 在這裡填寫上午的行程，例如： -->
-                    10:00 宜蘭火車站集合，領取神秘小禮物！
-                </p>
-            </article>
-            <article>
-                <h3>中午</h3>
-                <p>
-                    <!-- 在這裡填寫中午的行程，例如： -->
-                    12:00 午餐：品嚐知名的蒜味肉羹。
-                </p>
-            </article>
-            <article>
-                <h3>下午</h3>
-                <p>
-                    <!-- 在這裡填寫下午的行程，例如： -->
-                    14:00 前往幾米公園，拍攝文青團體照。<br>
-                    16:00 入住飯店，稍作休息。
-                </p>
-            </article>
-            <article>
-                <h3>晚上</h3>
-                <p>
-                    <!-- 在這裡填寫晚上的行程，例如： -->
-                    18:00 晚餐：東門夜市美食馬拉松！
-                </p>
+                <h3>行程</h3>
+                <ul>
+                    <li>11:30｜🚉 羅東車站集合</li>
+                    <li>12:00｜🚗 租車（安排行李上車）</li>
+                    <li>
+                        <button class="accordion">12:30｜🍱 上品佑（午餐）</button>
+                        <div class="panel">
+                            <p><strong>地址：</strong>宜蘭縣羅東鎮中山路三段180號</p>
+                            <p><strong>電話：</strong>03-955-1234</p>
+                            <p><strong>菜單：</strong><a href="https://www.example.com/menu" target="_blank">點我看菜單</a></p>
+                        </div>
+                    </li>
+                    <li>14:00｜🧼 張美阿嬤（體驗活動或參觀）</li>
+                    <li>17:30｜🌃 清溝夜市（晚餐）</li>
+                    <li>20:00｜🏡 民宿入住與休息</li>
+                </ul>
             </article>
         </section>
 
         <section id="day2">
-            <h2>第二天：深度探險日</h2>
+            <h2>第二天：觀光＋烤肉日</h2>
             <article>
-                <h3>上午</h3>
-                <p>
-                    <!-- 在這裡填寫上午的行程 -->
-                    09:00 前往傳統藝術中心，體驗台灣古早味。
-                </p>
-            </article>
-            <article>
-                <h3>中午</h3>
-                <p>
-                    <!-- 在這裡填寫中午的行程 -->
-                    12:30 午餐：享用美味的海鮮大餐。
-                </p>
-            </article>
-            <article>
-                <h3>下午</h3>
-                <p>
-                    <!-- 在這裡填寫下午的行程 -->
-                    15:00 挑戰刺激的戶外活動，或是選擇悠閒的下午茶時光。
-                </p>
-            </article>
-            <article>
-                <h3>晚上</h3>
-                <p>
-                    <!-- 在這裡填寫晚上的行程 -->
-                    19:00 團康活動與星光夜話。
-                </p>
+                <h3>行程</h3>
+                <ul>
+                    <li>10:30｜🍜 來來（早午餐）</li>
+                    <li>12:00｜🛶 冬山河親水公園散步、玩水</li>
+                    <li>14:30｜🧅 金珠蔥油餅</li>
+                    <li>15:00｜🛒 購買烤肉材料（喜互會 or 超市）</li>
+                    <li>17:30｜🚗 回民宿準備</li>
+                    <li>18:30｜🍖 烤肉晚餐</li>
+                </ul>
             </article>
         </section>
 
         <section id="day3">
-            <h2>第三天：伴手禮與歸途</h2>
+            <h2>第三天：散策與回程前小吃</h2>
             <article>
-                <h3>上午</h3>
-                <p>
-                    <!-- 在這裡填寫上午的行程 -->
-                    10:00 睡到自然醒，享受飯店設施。
-                </p>
+                <h3>行程</h3>
+                <ul>
+                    <li>10:00｜🎨 幾米公園散步＋拍照</li>
+                    <li>11:30｜🍛 羊陶（午餐）</li>
+                    <li>13:00｜🧱 積木館 / 體驗活動</li>
+                    <li>14:30｜🍧 冰店吃冰</li>
+                    <li>15:30｜🍰 購買生乳捲伴手禮</li>
+                    <li>16:00｜🚉 準備歸程</li>
+                </ul>
             </article>
-            <article>
-                <h3>中午</h3>
-                <p>
-                    <!-- 在這裡填寫中午的行程 -->
-                    12:00 退房並享用最後一頓宜蘭特色午餐。
-                </p>
-            </article>
-            <article>
-                <h3>下午</h3>
-                <p>
-                    <!-- 在這裡填寫下午的行程 -->
-                    14:00 前往市區購買伴手禮（牛舌餅、鴨賞）。<br>
-                    16:00 滿載而歸，期待下一次隊遊！
-                </p>
-            </article>
+        </section>
+
+        <section id="rules">
+            <h2>遊戲規則</h2>
+            <ul>
+                <li>（請在此補充遊戲規則內容）</li>
+            </ul>
         </section>
 
         <section id="reminders">
@@ -150,6 +126,46 @@
         <p>&copy; 2024 那啥第二屆隊遊. 祝旅途愉快！</p>
     </footer>
 
-    <script src="script.js"></script>
+    <style>
+        .accordion {
+            background-color: #f1f1f1;
+            color: #333;
+            cursor: pointer;
+            padding: 8px 16px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1em;
+            transition: background 0.2s;
+            margin-bottom: 4px;
+        }
+        .accordion.active, .accordion:hover {
+            background-color: #e2e2e2;
+        }
+        .panel {
+            padding: 0 16px 8px 16px;
+            display: none;
+            background-color: #fafafa;
+            border-left: 2px solid #ddd;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var acc = document.getElementsByClassName('accordion');
+            for (var i = 0; i < acc.length; i++) {
+                acc[i].addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    var panel = this.nextElementSibling;
+                    if (panel.style.display === 'block') {
+                        panel.style.display = 'none';
+                    } else {
+                        panel.style.display = 'block';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html> 
