@@ -80,8 +80,9 @@ main {
 }
 
 .content-section ul {
-    padding-left: 1.2em;
+    padding-left: 0;
     margin: 18px 0 0 0;
+    list-style: none;
 }
 .content-section ul li {
     color: #222;
