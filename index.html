@@ -72,15 +72,21 @@
                         <div class="panel">
                             <p><strong>地址：</strong>宜蘭縣羅東鎮中山路三段180號</p>
                             <p><strong>電話：</strong>03-955-1234</p>
-                            <p><strong>菜單：</strong><a href="https://www.example.com/menu" target="_blank">點我看菜單</a></p>
-                            <img src="https://i.imgur.com/3Q9Z1Zm.jpg" alt="上品佑" style="max-width:200px;">
+                            <p><strong>菜單：</strong>如圖</p>
+                            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+                                <img src="images/yo-1.jpg" alt="上品佑菜單1" style="max-width:180px; border-radius:6px;">
+                                <img src="images/yo-2.jpg" alt="上品佑菜單2" style="max-width:180px; border-radius:6px;">
+                            </div>
                         </div>
                     </li>
                     <li>14:00｜🧼 張美阿嬤（體驗活動或參觀）
                         <div class="panel">
                             <p><strong>地點：</strong>張美阿嬤農場</p>
                             <p><strong>地址：</strong>宜蘭縣冬山鄉幸福路88號</p>
-                            <img src="https://i.imgur.com/4Q9Z1Zm.jpg" alt="張美阿嬤" style="max-width:200px;">
+                            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+                                <img src="images/fram-1.jpg" alt="張美阿嬤1" style="max-width:180px; border-radius:6px;">
+                                <img src="images/fram-2.jpg" alt="張美阿嬤2" style="max-width:180px; border-radius:6px;">
+                            </div>
                         </div>
                     </li>
                     <li>17:30｜🌃 清溝夜市（晚餐）
@@ -240,6 +246,19 @@
         .clickable:hover {
             background: #f5f7fa;
         }
+        .panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0 16px;
+            background-color: #fafafa;
+            border-left: 2px solid #ddd;
+            border-bottom: 1px solid #eee;
+        }
+        .clickable.active .panel {
+            max-height: 500px; /* 根據內容可調整 */
+            padding-bottom: 8px;
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -247,18 +266,15 @@
             var tripItems = document.querySelectorAll('.trip-list li');
             tripItems.forEach(function(item) {
                 item.addEventListener('click', function(e) {
-                    // 避免點擊 panel 內部時觸發 li 的 toggle
                     if (e.target.closest('.panel')) return;
-                    // 全部收起
+                    // 如果已經是 active，則收合
+                    var isActive = this.classList.contains('active');
                     tripItems.forEach(function(other) {
                         other.classList.remove('active');
-                        var p = other.querySelector('.panel');
-                        if (p) p.style.display = 'none';
                     });
-                    // 展開目前這個
-                    this.classList.add('active');
-                    var panel = this.querySelector('.panel');
-                    if (panel) panel.style.display = 'block';
+                    if (!isActive) {
+                        this.classList.add('active');
+                    }
                 });
             });
             // SPA 切換
