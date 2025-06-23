@@ -5,16 +5,16 @@ body {
     line-height: 1.8;
     margin: 0;
     padding: 0;
-    background-color: #f0f4f8; /* A lighter, softer blue-gray background */
-    color: #333;
+    background-color: #162447; /* 深藍色背景 */
+    color: #f8f8f8; /* 淺色文字 */
 }
 
 header {
-    background: #4a69bd; /* A more modern, friendly blue */
+    background: #1f4068; /* 深藍色 */
     color: #fff;
     padding: 1rem 0;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 header h1 {
@@ -36,35 +36,35 @@ nav ul li {
 nav ul li a {
     color: #fff;
     text-decoration: none;
-    padding: 8px 15px; /* Add padding to make it look like a button */
-    background-color: #6a89cc; /* A slightly lighter blue for buttons */
-    border-radius: 20px; /* Rounded corners for the button */
-    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    padding: 8px 15px;
+    background-color: #1b1b2f; /* 更深的藍色按鈕 */
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
     font-weight: 400;
 }
 
 nav ul li a:hover {
-    background-color: #5778c1; /* Darker blue on hover for feedback */
+    background-color: #324a7a; /* 較亮的深藍 */
 }
 
 main {
     padding: 30px;
     max-width: 900px;
-    margin: 20px auto; /* Center the main content */
+    margin: 20px auto;
 }
 
 section {
     margin-bottom: 30px;
     padding: 25px;
-    background: #fff;
-    border-radius: 8px; /* Slightly larger radius for a softer look */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.08); /* A more pronounced shadow for card effect */
-    border-left: 5px solid #4a69bd; /* Add a color accent bar */
+    background: #1b1b2f; /* 深藍色卡片 */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    border-left: 5px solid #1f4068;
 }
 
 section h2 {
-    color: #4a69bd;
-    border-bottom: 2px solid #eef2f7;
+    color: #e43f5a; /* 深藍配亮紅點綴 */
+    border-bottom: 2px solid #324a7a;
     padding-bottom: 10px;
     margin-top: 0;
 }
@@ -76,7 +76,7 @@ article {
 footer {
     text-align: center;
     padding: 20px;
-    background: #333;
+    background: #1f4068;
     color: #fff;
     font-size: 0.9em;
 } 
