@@ -105,4 +105,11 @@ footer {
 .weather-widget {
   text-align: center;
   margin: 1em 0 2em 0;
+}
+
+.panel img {
+    max-height: 120px;
+    border-radius: 6px;
+    height: auto;
+    width: auto;
 } 
