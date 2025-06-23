@@ -294,9 +294,9 @@
             // 天氣 API 整合
             const CWB_API_KEY = 'CWA-34476997-F821-45C5-8BDE-8F5F7A4E6609';
             const weatherLocations = [
-                { name: '宜蘭縣', id: 'F-D0047-001', element: '羅東鎮' },
-                { name: '羅東', id: 'F-D0047-001', element: '羅東鎮' },
-                { name: '冬山', id: 'F-D0047-001', element: '冬山鄉' }
+                { name: '宜蘭縣宜蘭市', id: 'F-D0047-001', element: '宜蘭市' },
+                { name: '宜蘭縣羅東鎮', id: 'F-D0047-001', element: '羅東鎮' },
+                { name: '宜蘭縣五結鄉', id: 'F-D0047-001', element: '五結鄉' }
             ];
 
             function fetchWeather(location) {
@@ -304,9 +304,14 @@
                 return fetch(url)
                     .then(res => res.json())
                     .then(data => {
+                        // debug: 輸出 API 回傳內容
+                        console.log(location.name, data);
+                        if (!data.records || !data.records.locations || !data.records.locations[0].location || !data.records.locations[0].location.length) {
+                            throw new Error(`找不到「${location.name}」的天氣資料`);
+                        }
                         const loc = data.records.locations[0].location[0];
-                        const wx = loc.weatherElement.find(e => e.elementName === 'Wx').time[0].elementValue[0].value;
-                        const temp = loc.weatherElement.find(e => e.elementName === 'T').time[0].elementValue[0].value;
+                        const wx = loc.weatherElement.find(e => e.elementName === 'Wx')?.time[0].elementValue[0].value ?? '--';
+                        const temp = loc.weatherElement.find(e => e.elementName === 'T')?.time[0].elementValue[0].value ?? '--';
                         const pop = loc.weatherElement.find(e => e.elementName === 'PoP')?.time[0].elementValue[0].value ?? '--';
                         const at = loc.weatherElement.find(e => e.elementName === 'AT')?.time[0].elementValue[0].value ?? '--';
                         return {
@@ -342,8 +347,8 @@
             function loadWeather() {
                 Promise.all(weatherLocations.map(fetchWeather))
                     .then(renderWeatherCards)
-                    .catch(() => {
-                        document.getElementById('weather-cards').innerHTML = '<p style="color:red;">天氣資料載入失敗，請稍後再試。</p>';
+                    .catch((err) => {
+                        document.getElementById('weather-cards').innerHTML = `<p style='color:red;'>天氣資料載入失敗：${err.message}</p>`;
                     });
             }
 
