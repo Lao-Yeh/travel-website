@@ -34,8 +34,19 @@
     <main>
         <section id="weather">
             <h2>天氣</h2>
-            <div style="max-width: 100%; overflow-x: auto;">
-                <iframe src="https://www.cwb.gov.tw/V8/C/W/OBS_Station.html?ID=46766" width="375" height="420" style="border:none;" title="羅東天氣預報"></iframe>
+            <div style="max-width: 100%; overflow-x: auto; display: flex; gap: 16px; flex-wrap: wrap;">
+                <div style="min-width: 375px;">
+                    <h3 style="margin-bottom: 4px;">宜蘭縣</h3>
+                    <iframe src="https://www.cwb.gov.tw/V8/C/W/OBS_Station.html?ID=46762" width="375" height="420" style="border:none;" title="宜蘭天氣預報"></iframe>
+                </div>
+                <div style="min-width: 375px;">
+                    <h3 style="margin-bottom: 4px;">羅東</h3>
+                    <iframe src="https://www.cwb.gov.tw/V8/C/W/OBS_Station.html?ID=46766" width="375" height="420" style="border:none;" title="羅東天氣預報"></iframe>
+                </div>
+                <div style="min-width: 375px;">
+                    <h3 style="margin-bottom: 4px;">冬山</h3>
+                    <iframe src="https://www.cwb.gov.tw/V8/C/W/OBS_Station.html?ID=C0U680" width="375" height="420" style="border:none;" title="冬山天氣預報"></iframe>
+                </div>
             </div>
             <p style="font-size:0.9em; color:#888;">資料來源：中央氣象局</p>
         </section>
@@ -156,13 +167,16 @@
             var acc = document.getElementsByClassName('accordion');
             for (var i = 0; i < acc.length; i++) {
                 acc[i].addEventListener('click', function() {
-                    this.classList.toggle('active');
-                    var panel = this.nextElementSibling;
-                    if (panel.style.display === 'block') {
-                        panel.style.display = 'none';
-                    } else {
-                        panel.style.display = 'block';
+                    // 先全部收起
+                    for (var j = 0; j < acc.length; j++) {
+                        acc[j].classList.remove('active');
+                        var panel = acc[j].nextElementSibling;
+                        if (panel) panel.style.display = 'none';
                     }
+                    // 展開目前這個
+                    this.classList.add('active');
+                    var panel = this.nextElementSibling;
+                    if (panel) panel.style.display = 'block';
                 });
             }
         });
