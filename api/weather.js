@@ -1,12 +1,15 @@
 export default async function handler(req, res) {
-  const { location } = req.query;
-  const apiKey = 'CWA-34476997-F821-45C5-8BDE-8F5F7A4E6609';
-  const url = `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-001?Authorization=${apiKey}&locationName=${encodeURIComponent(location)}`;
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    res.status(200).json(data);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+  const cities = [
+    { name: "宜蘭市", query: "Yilan,TW" },
+    { name: "羅東鎮", query: "Luodong,TW" },
+    { name: "五結鄉", query: "Wujie,TW" }
+  ];
+  const apiKey = process.env.OWM_API_KEY || "你的APIKEY"; // 本地測試可直接寫 key
+  const fetchWeather = async (city) => {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.query}&appid=${apiKey}&units=metric&lang=zh_tw`;
+    const res = await fetch(url);
+    return res.json();
+  };
+  const weatherData = await Promise.all(cities.map(fetchWeather));
+  res.status(200).json(weatherData);
 }
