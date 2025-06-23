@@ -79,4 +79,30 @@ footer {
     background: #1f4068;
     color: #fff;
     font-size: 0.9em;
+}
+
+.weather-btn, .city-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #1a3a6b 60%, #274690 100%);
+  color: #fff;
+  padding: 0.8em 2em;
+  border-radius: 30px;
+  text-decoration: none;
+  margin: 0.7em;
+  font-size: 1.15em;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(26,42,107,0.12);
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.weather-btn:hover, .city-btn:hover {
+  background: linear-gradient(90deg, #274690 60%, #1a3a6b 100%);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 24px rgba(26,42,107,0.18);
+}
+.weather-widget {
+  text-align: center;
+  margin: 1em 0 2em 0;
 } 
