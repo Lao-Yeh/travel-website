@@ -34,21 +34,8 @@
     <main>
         <section id="weather" class="content-section" style="display:block;">
             <h2>天氣</h2>
-            <div style="max-width: 100%; overflow-x: auto; display: flex; gap: 16px; flex-wrap: wrap;">
-                <div style="min-width: 375px;">
-                    <h3 style="margin-bottom: 4px;">宜蘭縣</h3>
-                    <iframe src="https://www.cwb.gov.tw/V8/C/W/OBS_Station.html?ID=46762" width="375" height="420" style="border:none;" title="宜蘭天氣預報"></iframe>
-                </div>
-                <div style="min-width: 375px;">
-                    <h3 style="margin-bottom: 4px;">羅東</h3>
-                    <iframe src="https://www.cwb.gov.tw/V8/C/W/OBS_Station.html?ID=46766" width="375" height="420" style="border:none;" title="羅東天氣預報"></iframe>
-                </div>
-                <div style="min-width: 375px;">
-                    <h3 style="margin-bottom: 4px;">冬山</h3>
-                    <iframe src="https://www.cwb.gov.tw/V8/C/W/OBS_Station.html?ID=C0U680" width="375" height="420" style="border:none;" title="冬山天氣預報"></iframe>
-                </div>
-            </div>
-            <p style="font-size:0.9em; color:#888;">資料來源：中央氣象局</p>
+            <div id="weather-cards" style="display: flex; gap: 16px; flex-wrap: wrap;"></div>
+            <p style="font-size:0.9em; color:#888;">資料來源：中央氣象局開放資料</p>
         </section>
 
         <section id="day1" class="content-section" style="display:none;">
@@ -304,6 +291,63 @@
                     }
                 });
             });
+            // 天氣 API 整合
+            const CWB_API_KEY = 'CWA-34476997-F821-45C5-8BDE-8F5F7A4E6609';
+            const weatherLocations = [
+                { name: '宜蘭縣', id: 'F-D0047-001', element: '羅東鎮' },
+                { name: '羅東', id: 'F-D0047-001', element: '羅東鎮' },
+                { name: '冬山', id: 'F-D0047-001', element: '冬山鄉' }
+            ];
+
+            function fetchWeather(location) {
+                const url = `https://opendata.cwb.gov.tw/api/v1/rest/datastore/${location.id}?Authorization=${CWB_API_KEY}&locationName=${location.element}`;
+                return fetch(url)
+                    .then(res => res.json())
+                    .then(data => {
+                        const loc = data.records.locations[0].location[0];
+                        const wx = loc.weatherElement.find(e => e.elementName === 'Wx').time[0].elementValue[0].value;
+                        const temp = loc.weatherElement.find(e => e.elementName === 'T').time[0].elementValue[0].value;
+                        const pop = loc.weatherElement.find(e => e.elementName === 'PoP')?.time[0].elementValue[0].value ?? '--';
+                        const at = loc.weatherElement.find(e => e.elementName === 'AT')?.time[0].elementValue[0].value ?? '--';
+                        return {
+                            name: location.name,
+                            wx,
+                            temp,
+                            pop,
+                            at
+                        };
+                    });
+            }
+
+            function renderWeatherCards(weatherList) {
+                const container = document.getElementById('weather-cards');
+                container.innerHTML = '';
+                weatherList.forEach(w => {
+                    const card = document.createElement('div');
+                    card.style.background = '#f5f7fa';
+                    card.style.border = '1px solid #e0e0e0';
+                    card.style.borderRadius = '8px';
+                    card.style.padding = '16px';
+                    card.style.minWidth = '170px';
+                    card.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)';
+                    card.innerHTML = `<h3 style=\"margin-top:0;\">${w.name}</h3>
+                        <div style=\"font-size:1.2em;\">${w.wx}</div>
+                        <div style=\"margin-top:8px;\">🌡️ 溫度：${w.temp}°C</div>
+                        <div>💧 降雨機率：${w.pop}%</div>
+                        <div>🤗 體感溫度：${w.at}°C</div>`;
+                    container.appendChild(card);
+                });
+            }
+
+            function loadWeather() {
+                Promise.all(weatherLocations.map(fetchWeather))
+                    .then(renderWeatherCards)
+                    .catch(() => {
+                        document.getElementById('weather-cards').innerHTML = '<p style="color:red;">天氣資料載入失敗，請稍後再試。</p>';
+                    });
+            }
+
+            loadWeather();
         });
     </script>
 </body>
