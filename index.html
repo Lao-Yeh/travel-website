@@ -1,364 +1,54 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="那啥第二屆隊遊，宜蘭三日遊的完整行程與注意事項。">
-    <meta name="author" content="Lao-Yeh">
-    <meta name="robots" content="noindex">
-
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="那啥第二屆隊遊 - 宜蘭三日遊手冊">
-    <meta property="og:description" content="那啥第二屆隊遊，宜蘭三日遊的完整行程、注意事項與行李清單。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://lao-yeh.github.io/travel-website/">
-    <meta property="og:image" content="https://lao-yeh.github.io/travel-website/images/cover.jpg">
-
-    <title>那啥第二屆隊遊</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>天氣測試</title>
+  <style>
+    body { background: #0a2342; color: #fff; font-family: sans-serif; }
+    table { background: #fff; color: #222; border-radius: 8px; margin: 2em auto; padding: 1em; }
+    th, td { padding: 0.5em 1em; text-align: center; }
+    th { background: #1a3a6b; color: #fff; }
+    tr:nth-child(even) { background: #f0f4fa; }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>那啥第二屆隊遊</h1>
-        <nav>
-            <ul>
-                <li><a href="#weather" class="nav-btn active" data-section="weather">天氣</a></li>
-                <li><a href="#day1" class="nav-btn" data-section="day1">行程</a></li>
-                <li><a href="#packing-list" class="nav-btn" data-section="packing-list">行李</a></li>
-                <li><a href="#rules" class="nav-btn" data-section="rules">遊戲規則</a></li>
-                <li><a href="#reminders" class="nav-btn" data-section="reminders">注意事項</a></li>
-            </ul>
-        </nav>
-    </header>
+  <h1 style="text-align:center;">宜蘭地區即時天氣</h1>
+  <div id="weather" style="text-align:center;">載入天氣中...</div>
+  <script>
+    const apiKey = "2489d0d557110d29df9e13b2eb20c744"; // <--- 這裡換成你自己的 key
+    const cities = [
+      { name: "宜蘭市", query: "Yilan,TW" },
+      { name: "羅東鎮", query: "Luodong,TW" },
+      { name: "五結鄉", query: "Wujie,TW" }
+    ];
 
-    <main>
-        <section id="weather" class="content-section" style="display:block;">
-            <h2>天氣</h2>
-            <ul>
-                <li><a href="https://www.cwb.gov.tw/V8/C/W/Town/Town.html?TID=1000201" target="_blank">宜蘭市天氣（官方）</a></li>
-                <li><a href="https://www.cwb.gov.tw/V8/C/W/Town/Town.html?TID=1000213" target="_blank">羅東鎮天氣（官方）</a></li>
-                <li><a href="https://www.cwb.gov.tw/V8/C/W/Town/Town.html?TID=1000216" target="_blank">五結鄉天氣（官方）</a></li>
-            </ul>
-            <p style="font-size:0.9em; color:#888;">資料來源：中央氣象局</p>
-        </section>
+    async function fetchWeather(city) {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.query}&appid=${apiKey}&units=metric&lang=zh_tw`;
+      const res = await fetch(url);
+      return res.json();
+    }
 
-        <section id="day1" class="content-section" style="display:none;">
-            <h2>第一天：抵達與探索</h2>
-            <article>
-                <h3>行程</h3>
-                <ul class="trip-list">
-                    <li class="clickable">11:30｜🚉 羅東車站集合
-                        <div class="panel">
-                            <p><strong>地點：</strong>羅東車站</p>
-                            <p><strong>地址：</strong>宜蘭縣羅東鎮站前北路1號</p>
-                        </div>
-                    </li>
-                    <li class="clickable">12:00｜🚗 租車（安排行李上車）
-                        <div class="panel">
-                            <p><strong>租車地點：</strong>羅東租車行</p>
-                            <p><strong>地址：</strong>宜蘭縣羅東鎮中山路三段100號</p>
-                        </div>
-                    </li>
-                    <li class="clickable">12:30｜🍱 上品佑（午餐）
-                        <div class="panel">
-                            <p><strong>地址：</strong>宜蘭縣羅東鎮中山路三段180號</p>
-                            <p><strong>電話：</strong>03-955-1234</p>
-                            <p><strong>菜單：</strong>如圖</p>
-                            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
-                                <img src="images/yo-1.jpg" alt="上品佑菜單1" style="max-width:180px; border-radius:6px;">
-                                <img src="images/yo-2.jpg" alt="上品佑菜單2" style="max-width:180px; border-radius:6px;">
-                            </div>
-                        </div>
-                    </li>
-                    <li class="clickable">14:00｜🧼 張美阿嬤（體驗活動或參觀）
-                        <div class="panel">
-                            <p><strong>地點：</strong>張美阿嬤農場</p>
-                            <p><strong>地址：</strong>宜蘭縣冬山鄉幸福路88號</p>
-                            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
-                                <img src="images/fram-1.jpg" alt="張美阿嬤1" style="max-width:180px; border-radius:6px;">
-                                <img src="images/fram-2.jpg" alt="張美阿嬤2" style="max-width:180px; border-radius:6px;">
-                            </div>
-                        </div>
-                    </li>
-                    <li class="clickable">17:30｜🌃 清溝夜市（晚餐）
-                        <div class="panel">
-                            <p><strong>地址：</strong>宜蘭縣羅東鎮清溝路</p>
-                            <img src="https://i.imgur.com/5Q9Z1Zm.jpg" alt="清溝夜市" style="max-width:200px;">
-                        </div>
-                    </li>
-                    <li class="clickable">20:00｜🏡 民宿入住與休息
-                        <div class="panel">
-                            <p><strong>民宿名稱：</strong>宜蘭溫馨民宿</p>
-                            <p><strong>地址：</strong>宜蘭縣羅東鎮幸福路99號</p>
-                            <img src="https://i.imgur.com/6Q9Z1Zm.jpg" alt="民宿" style="max-width:200px;">
-                        </div>
-                    </li>
-                </ul>
-            </article>
-        </section>
-
-        <section id="day2" class="content-section" style="display:none;">
-            <h2>第二天：觀光＋烤肉日</h2>
-            <article>
-                <h3>行程</h3>
-                <ul class="trip-list">
-                    <li class="clickable">10:30｜🍜 來來（早午餐）
-                        <div class="panel">
-                            <p><strong>地址：</strong>宜蘭縣羅東鎮美食路1號</p>
-                            <img src="https://i.imgur.com/7Q9Z1Zm.jpg" alt="來來" style="max-width:200px;">
-                        </div>
-                    </li>
-                    <li class="clickable">12:00｜🛶 冬山河親水公園散步、玩水
-                        <div class="panel">
-                            <p><strong>地點：</strong>冬山河親水公園</p>
-                            <p><strong>地址：</strong>宜蘭縣五結鄉親河路二段2號</p>
-                            <img src="https://i.imgur.com/8Q9Z1Zm.jpg" alt="冬山河親水公園" style="max-width:200px;">
-                        </div>
-                    </li>
-                    <li class="clickable">14:30｜🧅 金珠蔥油餅
-                        <div class="panel">
-                            <p><strong>地址：</strong>宜蘭縣羅東鎮蔥油路8號</p>
-                            <img src="https://i.imgur.com/9Q9Z1Zm.jpg" alt="金珠蔥油餅" style="max-width:200px;">
-                        </div>
-                    </li>
-                    <li class="clickable">15:00｜🛒 購買烤肉材料（喜互會 or 超市）
-                        <div class="panel">
-                            <p><strong>地點：</strong>喜互會超市</p>
-                            <p><strong>地址：</strong>宜蘭縣羅東鎮超市路10號</p>
-                            <img src="https://i.imgur.com/10Q9Z1Zm.jpg" alt="超市" style="max-width:200px;">
-                        </div>
-                    </li>
-                    <li class="clickable">17:30｜🚗 回民宿準備
-                        <div class="panel">
-                            <p><strong>民宿名稱：</strong>宜蘭溫馨民宿</p>
-                            <p><strong>地址：</strong>宜蘭縣羅東鎮幸福路99號</p>
-                            <img src="https://i.imgur.com/6Q9Z1Zm.jpg" alt="民宿" style="max-width:200px;">
-                        </div>
-                    </li>
-                    <li class="clickable">18:30｜🍖 烤肉晚餐
-                        <div class="panel">
-                            <p><strong>地點：</strong>民宿庭院</p>
-                            <img src="https://i.imgur.com/11Q9Z1Zm.jpg" alt="烤肉" style="max-width:200px;">
-                        </div>
-                    </li>
-                </ul>
-            </article>
-        </section>
-
-        <section id="day3" class="content-section" style="display:none;">
-            <h2>第三天：散策與回程前小吃</h2>
-            <article>
-                <h3>行程</h3>
-                <ul class="trip-list">
-                    <li class="clickable">10:00｜🎨 幾米公園散步＋拍照
-                        <div class="panel">
-                            <p><strong>地點：</strong>幾米公園</p>
-                            <p><strong>地址：</strong>宜蘭縣宜蘭市光復路1號</p>
-                            <img src="https://i.imgur.com/12Q9Z1Zm.jpg" alt="幾米公園" style="max-width:200px;">
-                        </div>
-                    </li>
-                    <li class="clickable">11:30｜🍛 羊陶（午餐）
-                        <div class="panel">
-                            <p><strong>地址：</strong>宜蘭縣宜蘭市美食路2號</p>
-                            <img src="https://i.imgur.com/13Q9Z1Zm.jpg" alt="羊陶" style="max-width:200px;">
-                        </div>
-                    </li>
-                    <li class="clickable">13:00｜🧱 積木館 / 體驗活動
-                        <div class="panel">
-                            <p><strong>地點：</strong>積木館</p>
-                            <p><strong>地址：</strong>宜蘭縣宜蘭市積木路3號</p>
-                            <img src="https://i.imgur.com/14Q9Z1Zm.jpg" alt="積木館" style="max-width:200px;">
-                        </div>
-                    </li>
-                    <li class="clickable">14:30｜🍧 冰店吃冰
-                        <div class="panel">
-                            <p><strong>地點：</strong>宜蘭冰店</p>
-                            <p><strong>地址：</strong>宜蘭縣宜蘭市冰品路5號</p>
-                            <img src="https://i.imgur.com/15Q9Z1Zm.jpg" alt="冰店" style="max-width:200px;">
-                        </div>
-                    </li>
-                    <li class="clickable">15:30｜🍰 購買生乳捲伴手禮
-                        <div class="panel">
-                            <p><strong>地點：</strong>宜蘭伴手禮店</p>
-                            <p><strong>地址：</strong>宜蘭縣宜蘭市伴手路6號</p>
-                            <img src="https://i.imgur.com/16Q9Z1Zm.jpg" alt="伴手禮店" style="max-width:200px;">
-                        </div>
-                    </li>
-                    <li class="clickable">16:00｜🚉 準備歸程
-                        <div class="panel">
-                            <p><strong>地點：</strong>羅東車站</p>
-                            <p><strong>地址：</strong>宜蘭縣羅東鎮站前北路1號</p>
-                            <img src="https://i.imgur.com/1Q9Z1Zm.jpg" alt="羅東車站" style="max-width:200px;">
-                        </div>
-                    </li>
-                </ul>
-            </article>
-        </section>
-
-        <section id="rules" class="content-section" style="display:none;">
-            <h2>遊戲規則</h2>
-            <ul>
-                <li>（請在此補充遊戲規則內容）</li>
-            </ul>
-        </section>
-
-        <section id="reminders" class="content-section" style="display:none;">
-            <h2>行前注意事項</h2>
-            <ul>
-                <li>請務必攜帶個人證件（身分證、健保卡）。</li>
-                <li>集合請準時，逾時不候喔！</li>
-                <li>保持一顆開闊與愉快的心。</li>
-                <!-- 在這裡新增更多注意事項 -->
-            </ul>
-        </section>
-
-        <section id="packing-list" class="content-section" style="display:none;">
-            <h2>建議行李清單</h2>
-            <ul>
-                <li>換洗衣物（三日份）</li>
-                <li>個人藥品</li>
-                <li>充電器、行動電源</li>
-                <li>雨具（雨傘或雨衣）</li>
-                <li>盥洗用品（毛巾、牙刷...）</li>
-                <!-- 在這裡新增更多行李項目 -->
-            </ul>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 那啥第二屆隊遊. 祝旅途愉快！</p>
-    </footer>
-
-    <style>
-        .clickable {
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .clickable:hover {
-            background: #f5f7fa;
-        }
-        .panel {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 0 16px;
-            background-color: #fafafa;
-            border-left: 2px solid #ddd;
-            border-bottom: 1px solid #eee;
-        }
-        .clickable.active .panel {
-            max-height: 500px;
-            padding-bottom: 8px;
-        }
-    </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Accordion for 行程: 點擊 .clickable li 展開/收起 panel
-            var tripItems = document.querySelectorAll('.trip-list .clickable');
-            tripItems.forEach(function(item) {
-                item.addEventListener('click', function(e) {
-                    if (e.target.closest('.panel')) return;
-                    var isActive = this.classList.contains('active');
-                    tripItems.forEach(function(other) {
-                        other.classList.remove('active');
-                    });
-                    if (!isActive) {
-                        this.classList.add('active');
-                    }
-                });
-            });
-            // SPA 切換
-            var navBtns = document.querySelectorAll('.nav-btn');
-            var sections = document.querySelectorAll('.content-section');
-            navBtns.forEach(function(btn) {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    navBtns.forEach(function(b) { b.classList.remove('active'); });
-                    this.classList.add('active');
-                    var target = this.getAttribute('data-section');
-                    if (target === 'day1') {
-                        sections.forEach(function(sec) {
-                            if (sec.id === 'day1' || sec.id === 'day2' || sec.id === 'day3') {
-                                sec.style.display = 'block';
-                            } else {
-                                sec.style.display = 'none';
-                            }
-                        });
-                    } else {
-                        sections.forEach(function(sec) {
-                            if (sec.id === target) {
-                                sec.style.display = 'block';
-                            } else {
-                                sec.style.display = 'none';
-                            }
-                        });
-                    }
-                });
-            });
-            // 天氣 API 整合
-            const CWB_API_KEY = 'CWA-34476997-F821-45C5-8BDE-8F5F7A4E6609';
-            const weatherLocations = [
-                { name: '宜蘭縣宜蘭市', id: 'F-D0047-001', element: '宜蘭市' },
-                { name: '宜蘭縣羅東鎮', id: 'F-D0047-001', element: '羅東鎮' },
-                { name: '宜蘭縣五結鄉', id: 'F-D0047-001', element: '五結鄉' }
-            ];
-
-            function fetchWeather(location) {
-                const proxy = 'https://cors-anywhere.herokuapp.com/';
-                const url = proxy + `https://opendata.cwb.gov.tw/api/v1/rest/datastore/${location.id}?Authorization=${CWB_API_KEY}&locationName=${location.element}`;
-                return fetch(url)
-                    .then(res => res.json())
-                    .then(data => {
-                        // debug: 輸出 API 回傳內容
-                        console.log(location.name, data);
-                        if (!data.records || !data.records.locations || !data.records.locations[0].location || !data.records.locations[0].location.length) {
-                            throw new Error(`找不到「${location.name}」的天氣資料`);
-                        }
-                        const loc = data.records.locations[0].location[0];
-                        const wx = loc.weatherElement.find(e => e.elementName === 'Wx')?.time[0].elementValue[0].value ?? '--';
-                        const temp = loc.weatherElement.find(e => e.elementName === 'T')?.time[0].elementValue[0].value ?? '--';
-                        const pop = loc.weatherElement.find(e => e.elementName === 'PoP')?.time[0].elementValue[0].value ?? '--';
-                        const at = loc.weatherElement.find(e => e.elementName === 'AT')?.time[0].elementValue[0].value ?? '--';
-                        return {
-                            name: location.name,
-                            wx,
-                            temp,
-                            pop,
-                            at
-                        };
-                    });
-            }
-
-            function renderWeatherCards(weatherList) {
-                const container = document.getElementById('weather-cards');
-                container.innerHTML = '';
-                weatherList.forEach(w => {
-                    const card = document.createElement('div');
-                    card.style.background = '#f5f7fa';
-                    card.style.border = '1px solid #e0e0e0';
-                    card.style.borderRadius = '8px';
-                    card.style.padding = '16px';
-                    card.style.minWidth = '170px';
-                    card.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)';
-                    card.innerHTML = `<h3 style=\"margin-top:0;\">${w.name}</h3>
-                        <div style=\"font-size:1.2em;\">${w.wx}</div>
-                        <div style=\"margin-top:8px;\">🌡️ 溫度：${w.temp}°C</div>
-                        <div>💧 降雨機率：${w.pop}%</div>
-                        <div>🤗 體感溫度：${w.at}°C</div>`;
-                    container.appendChild(card);
-                });
-            }
-
-            function loadWeather() {
-                Promise.all(weatherLocations.map(fetchWeather))
-                    .then(renderWeatherCards)
-                    .catch((err) => {
-                        document.getElementById('weather-cards').innerHTML = `<p style='color:red;'>天氣資料載入失敗：${err.message}</p>`;
-                    });
-            }
-
-            loadWeather();
+    async function showWeather() {
+      try {
+        const weatherData = await Promise.all(cities.map(fetchWeather));
+        let html = "<table><tr><th>地點</th><th>天氣</th><th>溫度</th><th>體感</th><th>降雨量</th></tr>";
+        weatherData.forEach((data, i) => {
+          html += `<tr>
+            <td>${cities[i].name}</td>
+            <td>${data.weather[0].description}</td>
+            <td>${data.main.temp}°C</td>
+            <td>${data.main.feels_like}°C</td>
+            <td>${data.rain ? (data.rain["1h"] || data.rain["3h"] || 0) + "mm" : "0mm"}</td>
+          </tr>`;
         });
-    </script>
+        html += "</table>";
+        document.getElementById("weather").innerHTML = html;
+      } catch (e) {
+        document.getElementById("weather").innerHTML = "天氣資料載入失敗，請檢查 API Key 或網路連線。";
+      }
+    }
+
+    showWeather();
+  </script>
 </body>
-</html> 
+</html>
