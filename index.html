@@ -22,17 +22,17 @@
         <h1>那啥第二屆隊遊</h1>
         <nav>
             <ul>
-                <li><a href="#weather">天氣</a></li>
-                <li><a href="#day1">行程</a></li>
-                <li><a href="#packing-list">行李</a></li>
-                <li><a href="#rules">遊戲規則</a></li>
-                <li><a href="#reminders">注意事項</a></li>
+                <li><a href="#weather" class="nav-btn active" data-section="weather">天氣</a></li>
+                <li><a href="#day1" class="nav-btn" data-section="day1">行程</a></li>
+                <li><a href="#packing-list" class="nav-btn" data-section="packing-list">行李</a></li>
+                <li><a href="#rules" class="nav-btn" data-section="rules">遊戲規則</a></li>
+                <li><a href="#reminders" class="nav-btn" data-section="reminders">注意事項</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="weather">
+        <section id="weather" class="content-section" style="display:block;">
             <h2>天氣</h2>
             <div style="max-width: 100%; overflow-x: auto; display: flex; gap: 16px; flex-wrap: wrap;">
                 <div style="min-width: 375px;">
@@ -51,7 +51,7 @@
             <p style="font-size:0.9em; color:#888;">資料來源：中央氣象局</p>
         </section>
 
-        <section id="day1">
+        <section id="day1" class="content-section" style="display:none;">
             <h2>第一天：抵達與探索</h2>
             <article>
                 <h3>行程</h3>
@@ -73,7 +73,7 @@
             </article>
         </section>
 
-        <section id="day2">
+        <section id="day2" class="content-section" style="display:none;">
             <h2>第二天：觀光＋烤肉日</h2>
             <article>
                 <h3>行程</h3>
@@ -88,7 +88,7 @@
             </article>
         </section>
 
-        <section id="day3">
+        <section id="day3" class="content-section" style="display:none;">
             <h2>第三天：散策與回程前小吃</h2>
             <article>
                 <h3>行程</h3>
@@ -103,14 +103,14 @@
             </article>
         </section>
 
-        <section id="rules">
+        <section id="rules" class="content-section" style="display:none;">
             <h2>遊戲規則</h2>
             <ul>
                 <li>（請在此補充遊戲規則內容）</li>
             </ul>
         </section>
 
-        <section id="reminders">
+        <section id="reminders" class="content-section" style="display:none;">
             <h2>行前注意事項</h2>
             <ul>
                 <li>請務必攜帶個人證件（身分證、健保卡）。</li>
@@ -120,7 +120,7 @@
             </ul>
         </section>
 
-        <section id="packing-list">
+        <section id="packing-list" class="content-section" style="display:none;">
             <h2>建議行李清單</h2>
             <ul>
                 <li>換洗衣物（三日份）</li>
@@ -167,18 +167,33 @@
             var acc = document.getElementsByClassName('accordion');
             for (var i = 0; i < acc.length; i++) {
                 acc[i].addEventListener('click', function() {
-                    // 先全部收起
                     for (var j = 0; j < acc.length; j++) {
                         acc[j].classList.remove('active');
                         var panel = acc[j].nextElementSibling;
                         if (panel) panel.style.display = 'none';
                     }
-                    // 展開目前這個
                     this.classList.add('active');
                     var panel = this.nextElementSibling;
                     if (panel) panel.style.display = 'block';
                 });
             }
+            var navBtns = document.querySelectorAll('.nav-btn');
+            var sections = document.querySelectorAll('.content-section');
+            navBtns.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navBtns.forEach(function(b) { b.classList.remove('active'); });
+                    this.classList.add('active');
+                    var target = this.getAttribute('data-section');
+                    sections.forEach(function(sec) {
+                        if (sec.id === target || (target === 'day1' && sec.id === 'day1') || (target === 'day2' && sec.id === 'day2') || (target === 'day3' && sec.id === 'day3')) {
+                            sec.style.display = 'block';
+                        } else {
+                            sec.style.display = 'none';
+                        }
+                    });
+                });
+            });
         });
     </script>
 </body>
