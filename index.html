@@ -35,18 +35,12 @@
         <section id="weather" class="content-section" style="display:block;">
             <h2>天氣</h2>
             <div class="weather-widget">
-                <button class="city-btn" onclick="gotoWeather('1000202')">宜蘭市</button>
-                <button class="city-btn" onclick="gotoWeather('1000213')">羅東鎮</button>
-                <button class="city-btn" onclick="gotoWeather('1000215')">五結鄉</button>
+                <button class="city-btn" onclick="window.open('https://www.cwa.gov.tw/V8/C/W/Town/Town.html?TID=1000201','_blank')">宜蘭市</button>
+                <button class="city-btn" onclick="window.open('https://www.cwa.gov.tw/V8/C/W/Town/Town.html?TID=1000202','_blank')">羅東鎮</button>
+                <button class="city-btn" onclick="window.open('https://www.cwa.gov.tw/V8/C/W/Town/Town.html?TID=1000209','_blank')">五結鄉</button>
             </div>
             <p style="font-size:0.9em; color:#888;">資料來源：中央氣象局</p>
         </section>
-        <script>
-        function gotoWeather(tid) {
-          const url = `https://www.cwa.gov.tw/V8/C/W/Town/Town.html?TID=${tid}`;
-          window.open(url, '_blank');
-        }
-        </script>
 
         <section id="day1" class="content-section" style="display:none;">
             <h2>第一天：抵達與探索</h2>
