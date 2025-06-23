@@ -35,51 +35,18 @@
         <section id="weather" class="content-section" style="display:block;">
             <h2>天氣</h2>
             <div class="weather-widget">
-              <button class="weather-btn" onclick="showCityBtns()">天氣查詢</button>
-              <div id="cityBtns" style="display:none; margin-top:1em;">
                 <button class="city-btn" onclick="gotoWeather('1000202')">宜蘭市</button>
                 <button class="city-btn" onclick="gotoWeather('1000213')">羅東鎮</button>
                 <button class="city-btn" onclick="gotoWeather('1000215')">五結鄉</button>
-              </div>
             </div>
-            <style>
-            .weather-btn, .city-btn {
-              display: inline-block;
-              background: #1a3a6b;
-              color: #fff;
-              padding: 0.7em 1.5em;
-              border-radius: 8px;
-              text-decoration: none;
-              margin: 0.5em;
-              font-size: 1.1em;
-              border: none;
-              cursor: pointer;
-              transition: background 0.2s;
-            }
-            .weather-btn:hover, .city-btn:hover {
-              background: #0a2342;
-            }
-            .weather-widget {
-              text-align: center;
-              margin: 1em 0 2em 0;
-            }
-            </style>
-            <script>
-            function showCityBtns() {
-              document.getElementById('cityBtns').style.display = 'block';
-            }
-            function gotoWeather(tid) {
-              const url = `https://www.cwb.gov.tw/V8/C/W/Town/Town.html?TID=${tid}`;
-              window.open(url, '_blank');
-            }
-            </script>
-            <ul>
-                <li><a href="https://www.cwb.gov.tw/V8/C/W/Town/Town.html?TID=1000202" target="_blank">宜蘭市天氣（官方）</a></li>
-                <li><a href="https://www.cwb.gov.tw/V8/C/W/Town/Town.html?TID=1000213" target="_blank">羅東鎮天氣（官方）</a></li>
-                <li><a href="https://www.cwb.gov.tw/V8/C/W/Town/Town.html?TID=1000215" target="_blank">五結鄉天氣（官方）</a></li>
-            </ul>
             <p style="font-size:0.9em; color:#888;">資料來源：中央氣象局</p>
         </section>
+        <script>
+        function gotoWeather(tid) {
+          const url = `https://www.cwa.gov.tw/V8/C/W/Town/Town.html?TID=${tid}`;
+          window.open(url, '_blank');
+        }
+        </script>
 
         <section id="day1" class="content-section" style="display:none;">
             <h2>第一天：抵達與探索</h2>
@@ -334,69 +301,6 @@
                     }
                 });
             });
-            // 天氣 API 整合
-            const CWB_API_KEY = 'CWA-34476997-F821-45C5-8BDE-8F5F7A4E6609';
-            const weatherLocations = [
-                { name: '宜蘭縣宜蘭市', id: 'F-D0047-001', element: '宜蘭市' },
-                { name: '宜蘭縣羅東鎮', id: 'F-D0047-001', element: '羅東鎮' },
-                { name: '宜蘭縣五結鄉', id: 'F-D0047-001', element: '五結鄉' }
-            ];
-
-            function fetchWeather(location) {
-                const proxy = 'https://cors-anywhere.herokuapp.com/';
-                const url = proxy + `https://opendata.cwb.gov.tw/api/v1/rest/datastore/${location.id}?Authorization=${CWB_API_KEY}&locationName=${location.element}`;
-                return fetch(url)
-                    .then(res => res.json())
-                    .then(data => {
-                        // debug: 輸出 API 回傳內容
-                        console.log(location.name, data);
-                        if (!data.records || !data.records.locations || !data.records.locations[0].location || !data.records.locations[0].location.length) {
-                            throw new Error(`找不到「${location.name}」的天氣資料`);
-                        }
-                        const loc = data.records.locations[0].location[0];
-                        const wx = loc.weatherElement.find(e => e.elementName === 'Wx')?.time[0].elementValue[0].value ?? '--';
-                        const temp = loc.weatherElement.find(e => e.elementName === 'T')?.time[0].elementValue[0].value ?? '--';
-                        const pop = loc.weatherElement.find(e => e.elementName === 'PoP')?.time[0].elementValue[0].value ?? '--';
-                        const at = loc.weatherElement.find(e => e.elementName === 'AT')?.time[0].elementValue[0].value ?? '--';
-                        return {
-                            name: location.name,
-                            wx,
-                            temp,
-                            pop,
-                            at
-                        };
-                    });
-            }
-
-            function renderWeatherCards(weatherList) {
-                const container = document.getElementById('weather-cards');
-                container.innerHTML = '';
-                weatherList.forEach(w => {
-                    const card = document.createElement('div');
-                    card.style.background = '#f5f7fa';
-                    card.style.border = '1px solid #e0e0e0';
-                    card.style.borderRadius = '8px';
-                    card.style.padding = '16px';
-                    card.style.minWidth = '170px';
-                    card.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)';
-                    card.innerHTML = `<h3 style=\"margin-top:0;\">${w.name}</h3>
-                        <div style=\"font-size:1.2em;\">${w.wx}</div>
-                        <div style=\"margin-top:8px;\">🌡️ 溫度：${w.temp}°C</div>
-                        <div>💧 降雨機率：${w.pop}%</div>
-                        <div>🤗 體感溫度：${w.at}°C</div>`;
-                    container.appendChild(card);
-                });
-            }
-
-            function loadWeather() {
-                Promise.all(weatherLocations.map(fetchWeather))
-                    .then(renderWeatherCards)
-                    .catch((err) => {
-                        document.getElementById('weather-cards').innerHTML = `<p style='color:red;'>天氣資料載入失敗：${err.message}</p>`;
-                    });
-            }
-
-            loadWeather();
         });
     </script>
 </body>
