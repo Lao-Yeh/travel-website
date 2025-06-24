@@ -7,6 +7,7 @@ body {
     padding: 0;
     background-color: #f4f6fa; /* 淡灰背景 */
     color: #222; /* 深灰文字 */
+    background: linear-gradient(120deg, #e0e7ff 0%, #f4f6fa 100%);
 }
 
 header {
@@ -133,6 +134,18 @@ footer {
     }
 }
 
+@media (max-width: 600px) {
+  .panel img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  .trip-list div[style*="display:flex"] {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
 .weather-btn, .city-btn {
   display: inline-block;
   background: linear-gradient(90deg, #1a3a6b 60%, #274690 100%);
@@ -157,4 +170,78 @@ footer {
 .weather-widget {
   text-align: center;
   margin: 1em 0 2em 0;
-} 
+}
+
+/* Banner 輪播 */
+.banner-carousel {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 32px auto;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(31,64,104,0.13);
+  background: linear-gradient(90deg, #e0e7ff 0%, #f4f6fa 100%);
+  aspect-ratio: 16/6;
+  min-height: 120px;
+  max-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+  transition: opacity 0.7s;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.banner-img.active {
+  display: block;
+  opacity: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.banner-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+.banner-dots .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.6;
+  border: 2px solid #1f4068;
+  transition: opacity 0.3s, background 0.3s;
+}
+.banner-dots .dot.active {
+  background: #1f4068;
+  opacity: 1;
+}
+@media (max-width: 700px) {
+  .banner-carousel {
+    max-width: 98vw;
+    aspect-ratio: 16/9;
+    min-height: 80px;
+    max-height: 140px;
+  }
+}
+/* 卡片式設計加強 */
+.content-section {
+  box-shadow: 0 6px 24px rgba(31,64,104,0.13);
+  border-radius: 16px;
+  border-left-width: 10px;
+}
+/* 三天行程色條 */
+#day1.content-section { border-left-color: #4f8cff; }
+#day2.content-section { border-left-color: #ffb84f; }
+#day3.content-section { border-left-color: #6edb8f; } 
