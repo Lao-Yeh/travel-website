@@ -5,9 +5,8 @@ body {
     line-height: 1.8;
     margin: 0;
     padding: 0;
-    background-color: #f4f6fa; /* 淡灰背景 */
-    color: #222; /* 深灰文字 */
-    background: linear-gradient(120deg, #e0e7ff 0%, #f4f6fa 100%);
+    background: linear-gradient(120deg, #f4f6fa 0%, #e3e8f0 100%);
+    color: #222; /* 黑色文字 */
 }
 
 header {
@@ -15,7 +14,7 @@ header {
     color: #fff;
     padding: 1.5rem 0 1rem 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(31,64,104,0.08);
 }
 
 header h1 {
@@ -47,7 +46,8 @@ nav ul li a {
     font-size: 1.08em;
 }
 nav ul li a:hover, nav ul li a.active {
-    background-color: #273c50;
+    background-color: #4f8cff;
+    color: #fff;
     box-shadow: 0 2px 8px rgba(31,64,104,0.10);
 }
 
@@ -61,14 +61,18 @@ main {
     margin-bottom: 32px;
     padding: 28px 28px 22px 28px;
     background: #fff;
-    border-radius: 14px;
-    box-shadow: 0 6px 24px rgba(31,64,104,0.10);
-    border-left: 7px solid #1f4068;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(31,64,104,0.13);
+    border-left: 10px solid #1f4068;
     transition: box-shadow 0.2s;
 }
 .content-section:hover {
     box-shadow: 0 10px 32px rgba(31,64,104,0.18);
 }
+
+#day1.content-section { border-left-color: #4f8cff; } /* 亮藍 */
+#day2.content-section { border-left-color: #222; }    /* 黑色 */
+#day3.content-section { border-left-color: #e3e8f0; } /* 淺灰 */
 
 .content-section h2 {
     color: #1f4068;
@@ -97,7 +101,7 @@ main {
     display: inline-block;
     width: 8px;
     height: 8px;
-    background: #1f4068;
+    background: #4f8cff;
     border-radius: 50%;
     position: absolute;
     left: 0;
@@ -134,44 +138,6 @@ footer {
     }
 }
 
-@media (max-width: 600px) {
-  .panel img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-  .trip-list div[style*="display:flex"] {
-    flex-direction: column;
-    gap: 12px;
-  }
-}
-
-.weather-btn, .city-btn {
-  display: inline-block;
-  background: linear-gradient(90deg, #1a3a6b 60%, #274690 100%);
-  color: #fff;
-  padding: 0.8em 2em;
-  border-radius: 30px;
-  text-decoration: none;
-  margin: 0.7em;
-  font-size: 1.15em;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 16px rgba(26,42,107,0.12);
-  font-weight: bold;
-  letter-spacing: 1px;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-}
-.weather-btn:hover, .city-btn:hover {
-  background: linear-gradient(90deg, #274690 60%, #1a3a6b 100%);
-  transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 8px 24px rgba(26,42,107,0.18);
-}
-.weather-widget {
-  text-align: center;
-  margin: 1em 0 2em 0;
-}
-
 /* Banner 輪播 */
 .banner-carousel {
   width: 100%;
@@ -181,7 +147,7 @@ footer {
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(31,64,104,0.13);
-  background: linear-gradient(90deg, #e0e7ff 0%, #f4f6fa 100%);
+  background: linear-gradient(90deg, #e3e8f0 0%, #f4f6fa 100%);
   aspect-ratio: 16/6;
   min-height: 120px;
   max-height: 260px;
@@ -235,13 +201,50 @@ footer {
     max-height: 140px;
   }
 }
+
 /* 卡片式設計加強 */
 .content-section {
   box-shadow: 0 6px 24px rgba(31,64,104,0.13);
   border-radius: 16px;
   border-left-width: 10px;
 }
-/* 三天行程色條 */
-#day1.content-section { border-left-color: #4f8cff; }
-#day2.content-section { border-left-color: #ffb84f; }
-#day3.content-section { border-left-color: #6edb8f; } 
+
+/* 天氣按鈕、城市按鈕 */
+.weather-btn, .city-btn {
+  display: inline-block;
+  background: #4f8cff;
+  color: #fff;
+  padding: 0.8em 2em;
+  border-radius: 30px;
+  text-decoration: none;
+  margin: 0.7em;
+  font-size: 1.15em;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(31,64,104,0.12);
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.weather-btn:hover, .city-btn:hover {
+  background: #1f4068;
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 24px rgba(31,64,104,0.18);
+}
+.weather-widget {
+  text-align: center;
+  margin: 1em 0 2em 0;
+}
+
+@media (max-width: 600px) {
+  .panel img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  .trip-list div[style*="display:flex"] {
+    flex-direction: column;
+    gap: 12px;
+  }
+} 
