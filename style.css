@@ -36,19 +36,39 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #1f4068;
     text-decoration: none;
     padding: 10px 22px;
-    background-color: #1f4068;
+    background-color: #e3e8f0;
     border-radius: 22px;
-    transition: background-color 0.3s, box-shadow 0.2s;
+    transition: background-color 0.3s, box-shadow 0.2s, color 0.3s;
     font-weight: 500;
     font-size: 1.08em;
+    position: relative;
+    overflow: hidden;
+}
+nav ul li a::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 8px;
+    height: 3px;
+    background: #1f4068;
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+nav ul li a:hover::after,
+nav ul li a.active::after {
+    transform: scaleX(1);
 }
 nav ul li a:hover, nav ul li a.active {
     background-color: #1f4068;
     color: #fff;
     box-shadow: 0 2px 8px rgba(31,64,104,0.10);
+    transition: background-color 0.3s, box-shadow 0.2s, color 0.3s;
 }
 
 main {
@@ -58,15 +78,23 @@ main {
 }
 
 .content-section {
-    margin-bottom: 32px;
-    padding: 28px 28px 22px 28px;
-    background: #fff;
+    position: relative;
     border-radius: 16px;
     box-shadow: 0 6px 24px rgba(31,64,104,0.13);
-    border-left: 10px solid;
-    border-image: linear-gradient(to bottom, #1f4068, #e3e8f0) 1 100%;
-    transition: box-shadow 0.2s;
+    background: #fff;
+    padding-left: 0;
 }
+
+.card-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 12px;
+    height: 100%;
+    border-radius: 16px 0 0 16px;
+    background: linear-gradient(to bottom, #1f4068, #e3e8f0);
+}
+
 .content-section:hover {
     box-shadow: 0 10px 32px rgba(31,64,104,0.18);
 }
