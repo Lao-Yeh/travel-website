@@ -88,10 +88,10 @@ main {
 .card-bar {
     position: absolute;
     left: 0;
-    top: 0;
+    top: 2px;
     width: 12px;
-    height: 100%;
-    border-radius: 16px 0 0 16px;
+    height: calc(100% - 4px);
+    border-radius: 14px 0 0 14px;
     background: linear-gradient(to bottom, #1f4068, #e3e8f0);
 }
 
