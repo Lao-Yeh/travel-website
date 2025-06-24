@@ -93,7 +93,7 @@ main {
     width: 16px;
     height: 100%;
     border-radius: 16px 0 0 16px;
-    background: linear-gradient(to bottom, #1f4068, #e3e8f0);
+    background: linear-gradient(to bottom, #1f4068, #222);
     z-index: 1;
 }
 
@@ -118,6 +118,7 @@ main {
     font-size: 1.35em;
     font-weight: 700;
     letter-spacing: 1px;
+    text-align: center;
 }
 
 .content-section ul {
