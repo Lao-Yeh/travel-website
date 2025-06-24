@@ -10,7 +10,7 @@ body {
 }
 
 header {
-    background: #1f4068; /* 深藍色 */
+    background: linear-gradient(90deg, #1f4068 0%, #222 100%);
     color: #fff;
     padding: 1.5rem 0 1rem 0;
     text-align: center;
@@ -46,7 +46,7 @@ nav ul li a {
     font-size: 1.08em;
 }
 nav ul li a:hover, nav ul li a.active {
-    background-color: #4f8cff;
+    background-color: #1f4068;
     color: #fff;
     box-shadow: 0 2px 8px rgba(31,64,104,0.10);
 }
@@ -63,14 +63,15 @@ main {
     background: #fff;
     border-radius: 16px;
     box-shadow: 0 6px 24px rgba(31,64,104,0.13);
-    border-left: 10px solid #1f4068;
+    border-left: 10px solid;
+    border-image: linear-gradient(to bottom, #1f4068, #e3e8f0) 1 100%;
     transition: box-shadow 0.2s;
 }
 .content-section:hover {
     box-shadow: 0 10px 32px rgba(31,64,104,0.18);
 }
 
-#day1.content-section { border-left-color: #4f8cff; } /* 亮藍 */
+#day1.content-section { border-left-color: #1f4068; } /* 深藍 */
 #day2.content-section { border-left-color: #222; }    /* 黑色 */
 #day3.content-section { border-left-color: #e3e8f0; } /* 淺灰 */
 
@@ -101,7 +102,7 @@ main {
     display: inline-block;
     width: 8px;
     height: 8px;
-    background: #4f8cff;
+    background: #1f4068;
     border-radius: 50%;
     position: absolute;
     left: 0;
@@ -147,7 +148,7 @@ footer {
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(31,64,104,0.13);
-  background: linear-gradient(90deg, #e3e8f0 0%, #f4f6fa 100%);
+  background: linear-gradient(90deg, #1f4068 0%, #e3e8f0 100%);
   aspect-ratio: 16/6;
   min-height: 120px;
   max-height: 260px;
@@ -202,17 +203,10 @@ footer {
   }
 }
 
-/* 卡片式設計加強 */
-.content-section {
-  box-shadow: 0 6px 24px rgba(31,64,104,0.13);
-  border-radius: 16px;
-  border-left-width: 10px;
-}
-
 /* 天氣按鈕、城市按鈕 */
 .weather-btn, .city-btn {
   display: inline-block;
-  background: #4f8cff;
+  background: #1f4068;
   color: #fff;
   padding: 0.8em 2em;
   border-radius: 30px;
@@ -227,7 +221,7 @@ footer {
   transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
 }
 .weather-btn:hover, .city-btn:hover {
-  background: #1f4068;
+  background: #222;
   color: #fff;
   transform: translateY(-2px) scale(1.04);
   box-shadow: 0 8px 24px rgba(31,64,104,0.18);
