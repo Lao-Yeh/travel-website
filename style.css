@@ -82,17 +82,23 @@ main {
     border-radius: 16px;
     box-shadow: 0 6px 24px rgba(31,64,104,0.13);
     background: #fff;
-    padding-left: 0;
+    padding-left: 24px;
 }
 
 .card-bar {
     position: absolute;
     left: 0;
-    top: 2px;
-    width: 12px;
-    height: calc(100% - 4px);
-    border-radius: 14px 0 0 14px;
+    top: 0;
+    width: 16px;
+    height: 100%;
+    border-radius: 16px 0 0 16px;
     background: linear-gradient(to bottom, #1f4068, #e3e8f0);
+    z-index: 1;
+}
+
+.content-section > *:not(.card-bar) {
+    position: relative;
+    z-index: 2;
 }
 
 .content-section:hover {
