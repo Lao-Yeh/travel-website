@@ -297,4 +297,11 @@ footer {
     flex-direction: column;
     gap: 12px;
   }
+}
+
+.no-dot::before {
+  display: none !important;
+}
+.no-dot {
+  padding-left: 0 !important;
 } 
