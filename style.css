@@ -304,4 +304,33 @@ footer {
 }
 .no-dot {
   padding-left: 0 !important;
+}
+
+#packing-special strong {
+  display: block;
+  text-align: center;
+  font-size: 1.13em;
+  margin: 18px 0 6px 0;
+  letter-spacing: 1px;
+}
+
+.official-btn {
+  display: inline-block;
+  background: #e3e8f0;
+  color: #222;
+  border: none;
+  border-radius: 18px;
+  padding: 6px 18px;
+  font-size: 1em;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 6px;
+  margin-top: 2px;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px rgba(31,64,104,0.07);
+  cursor: pointer;
+}
+.official-btn:hover {
+  background: #cfd6df;
+  color: #1f4068;
 } 
