@@ -157,7 +157,6 @@ footer {
 }
 
 .panel img {
-    max-height: 120px;
     border-radius: 6px;
     height: auto;
     width: auto;
@@ -172,8 +171,10 @@ footer {
         padding: 16px 6vw 14px 6vw;
     }
     .panel img {
+        width: 100%;
         max-width: 100%;
         height: auto;
+        max-height: none;
     }
     nav ul {
         display: flex;
@@ -194,6 +195,19 @@ footer {
         margin: 0;
         min-width: 90px;
         text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .panel img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: none;
+    }
+    .trip-list div[style*="display:flex"] {
+        flex-direction: column;
+        gap: 12px;
     }
 }
 
