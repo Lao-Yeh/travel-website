@@ -162,7 +162,8 @@ footer {
     background-color: #fafafa;
     border-left: 2px solid #ddd;
     border-bottom: 1px solid #eee;
-    border: 5px solid red !important;
+    box-sizing: border-box;
+    overflow: auto;
 }
 .clickable.active .panel {
     display: block;
