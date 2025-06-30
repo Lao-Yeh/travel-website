@@ -164,7 +164,18 @@ footer {
     border-bottom: 1px solid #eee;
     box-sizing: border-box;
     max-height: 60vh;
-    overflow-y: auto;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #1f4068 #e3e8f0;
+}
+.panel::-webkit-scrollbar {
+    width: 8px;
+    background: #e3e8f0;
+}
+.panel::-webkit-scrollbar-thumb {
+    background: #1f4068;
+    border-radius: 6px;
 }
 .clickable.active .panel {
     display: block;
