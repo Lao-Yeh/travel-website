@@ -156,6 +156,27 @@ footer {
     margin-top: 40px;
 }
 
+.panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 16px;
+    background-color: #fafafa;
+    border-left: 2px solid #ddd;
+    border-bottom: 1px solid #eee;
+}
+.clickable.active .panel {
+    max-height: 2000px; /* 設一個很大的值以容納圖片 */
+    overflow: visible;
+    padding-bottom: 8px;
+}
+.img-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
 .panel img {
     border-radius: 6px;
     height: auto;
