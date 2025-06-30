@@ -158,30 +158,32 @@ footer {
 
 .panel {
     display: none;
-    padding: 0 16px;
+    padding: 0 16px 16px 16px;
     background-color: #fafafa;
     border-left: 2px solid #ddd;
     border-bottom: 1px solid #eee;
 }
 .clickable.active .panel {
     display: block;
-    padding-bottom: 8px;
 }
 .img-row {
     display: flex;
-    gap: 8px;
     flex-wrap: wrap;
+    gap: 12px;
     margin-top: 8px;
     width: 100%;
     box-sizing: border-box;
+    justify-content: flex-start;
 }
 .img-row img {
-    width: 100%;
-    max-width: 180px;
-    height: auto;
-    border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(31,64,104,0.10);
     flex: 1 1 180px;
+    max-width: 180px;
+    min-width: 120px;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(31,64,104,0.10);
+    background: #fff;
 }
 
 .panel img {
