@@ -157,17 +157,14 @@ footer {
 }
 
 .panel {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    display: none;
     padding: 0 16px;
     background-color: #fafafa;
     border-left: 2px solid #ddd;
     border-bottom: 1px solid #eee;
 }
 .clickable.active .panel {
-    max-height: 2000px; /* 設一個很大的值以容納圖片 */
-    overflow: visible;
+    display: block;
     padding-bottom: 8px;
 }
 .img-row {
