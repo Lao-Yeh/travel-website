@@ -163,7 +163,8 @@ footer {
     border-left: 2px solid #ddd;
     border-bottom: 1px solid #eee;
     box-sizing: border-box;
-    overflow: auto;
+    max-height: 60vh;
+    overflow-y: auto;
 }
 .clickable.active .panel {
     display: block;
@@ -189,8 +190,6 @@ footer {
 
 .panel img {
     border-radius: 6px;
-    height: auto;
-    width: auto;
     box-shadow: 0 2px 8px rgba(31,64,104,0.10);
 }
 
@@ -335,11 +334,6 @@ footer {
 }
 
 @media (max-width: 600px) {
-  .panel img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
   .trip-list div[style*="display:flex"] {
     flex-direction: column;
     gap: 12px;
