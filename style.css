@@ -166,24 +166,23 @@ footer {
 .clickable.active .panel {
     display: block;
 }
+
 .img-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    display: block;
     margin-top: 8px;
     width: 100%;
     box-sizing: border-box;
-    justify-content: flex-start;
 }
+
 .img-row img {
-    flex: 1 1 180px;
-    max-width: 180px;
-    min-width: 120px;
+    display: block;
     width: 100%;
+    max-width: 100%;
     height: auto;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(31,64,104,0.10);
     background: #fff;
+    margin-bottom: 12px;
 }
 
 .panel img {
@@ -194,17 +193,17 @@ footer {
 }
 
 @media (max-width: 700px) {
+    .panel img, .img-row img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+    }
     main {
         padding: 10px 2vw 20px 2vw;
     }
     .content-section {
         padding: 16px 6vw 14px 6vw;
-    }
-    .panel img {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        max-height: none;
     }
     nav ul {
         display: flex;
@@ -229,11 +228,11 @@ footer {
 }
 
 @media (max-width: 600px) {
-    .panel img {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        max-height: none;
+    .panel img, .img-row img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
     }
     .trip-list div[style*="display:flex"] {
         flex-direction: column;
