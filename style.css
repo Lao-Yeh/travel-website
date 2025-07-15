@@ -386,3 +386,33 @@ footer {
   background: #cfd6df;
   color: #1f4068;
 } 
+
+/* 新增遊戲規則區塊樣式，仿照行李區塊 */
+.game-rule-block {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(31,64,104,0.13);
+    padding: 18px 24px 12px 24px;
+    margin-bottom: 32px;
+    margin-top: 18px;
+    position: relative;
+}
+.game-rule-block h3 {
+    color: #1f4068;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.18em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: left;
+}
+.game-rule-block ul {
+    padding-left: 18px;
+    margin: 0;
+    list-style: disc inside;
+}
+@media (max-width: 700px) {
+    .game-rule-block {
+        padding: 12px 6vw 10px 6vw;
+    }
+} 
